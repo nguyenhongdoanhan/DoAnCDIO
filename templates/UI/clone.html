@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Voice Clone</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/clone.css' %}">
+</head>
+<body>
+
+{% include "components/sidebar.html" %}
+
+<main class="main-content">
+    
+    {% include "components/header.html" %}
+
+    <div class="clone-grid">
+
+        <!-- FAST -->
+        <div class="clone-card">
+            <h3>⚡ Nhanh</h3>
+            <p>Clone trong 10 giây</p>
+            <button class="btn btn-fast" onclick="goFast()">Thử ngay</button>
+        </div>
+
+        <!-- PREMIUM -->
+        <div class="clone-card premium">
+            <h3>🌟 Cao cấp</h3>
+            <p>Clone cảm xúc (Premium)</p>
+            <button class="btn btn-premium" onclick="goPremium()">Nâng cấp</button>
+        </div>
+
+    </div>
+</main>
+
+<!-- JS -->
+<script src="{% static 'js/include.js' %}"></script>
+
+<script>
+function goFast() {
+    window.location.href = "/dashboard/";
+}
+
+function goPremium() {
+    window.location.href = "/pricing/";
+}
+</script>
+
+</body>
+</html>

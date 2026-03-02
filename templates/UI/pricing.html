@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bảng giá</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pricing.css' %}">
+</head>
+<body>
+
+{% include "components/sidebar.html" %}
+
+<main class="main-content">
+    
+    {% include "components/header.html" %}
+
+    <div class="pricing-wrapper">
+        <h2 class="pricing-title">Chọn gói phù hợp với bạn</h2>
+
+        <div class="pricing-grid">
+
+            <!-- BASIC -->
+            <div class="price-card {% if request.user.plan == 'basic' %}active{% endif %}">
+                
+                {% if request.user.plan == "basic" %}
+                    <div class="price-badge">Đang sử dụng</div>
+                {% endif %}
+
+                <h3>Cơ bản</h3>
+
+                <p class="price">
+                    39.000đ <span>/ tháng</span>
+                </p>
+
+                <ul class="price-features">
+                    <li>✔ Chuyển văn bản không giới hạn</li>
+                    <li>✔ Tốc độ xử lý tiêu chuẩn</li>
+                    <li>✖ Clone cảm xúc nâng cao</li>
+                </ul>
+
+                {% if request.user.plan != "basic" %}
+                    <button onclick="choosePlan('basic')" class="btn btn-outline">
+                        Chọn gói này
+                    </button>
+                {% endif %}
+            </div>
+
+
+            <!-- PRO -->
+            <div class="price-card featured {% if request.user.plan == 'pro' %}active{% endif %}">
+
+                {% if request.user.plan == "pro" %}
+                    <div class="price-badge premium">Đang sử dụng</div>
+                {% endif %}
+
+                <h3>Chuyên nghiệp</h3>
+
+                <p class="price">
+                    99.000đ <span>/ tháng</span>
+                </p>
+
+                <ul class="price-features">
+                    <li>✔ Tốc độ cao</li>
+                    <li>✔ Clone cảm xúc nâng cao</li>
+                    <li>✔ Ưu tiên xử lý</li>
+                </ul>
+
+                {% if request.user.plan != "pro" %}
+                    <button onclick="choosePlan('pro')" class="btn btn-primary">
+                        Nâng cấp ngay
+                    </button>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+<!-- JS -->
+<script src="{% static 'js/include.js' %}"></script>
+<script src="{% static 'js/pricing.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Nhiệm vụ</title>
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tasks.css' %}">
+</head>
+<body>
+
+{% include "components/sidebar.html" %}
+
+<main class="main-content">
+    {% include "components/header.html" %}
+
+    <div class="page-container">
+
+        <h1 class="page-title">Nhiệm vụ hàng ngày</h1>
+
+        <div class="task-card">
+
+            <!-- Đăng nhập (auto done) -->
+            <div class="task-item done">
+                <div class="task-left">
+                    <input type="checkbox" checked disabled>
+                    <span>Đăng nhập mỗi ngày</span>
+                </div>
+                <span class="task-status completed">Hoàn thành</span>
+            </div>
+
+            <!-- Khảo sát -->
+            <div class="task-item clickable" id="surveyTask" onclick="completeSurvey()">
+                <div class="task-left">
+                    <input type="checkbox" id="surveyCheckbox" disabled>
+                    <span>Hoàn thành khảo sát</span>
+                </div>
+                <span class="task-action">Thực hiện</span>
+            </div>
+
+            <!-- Mời bạn bè -->
+            <div class="task-item clickable" id="inviteTask" onclick="inviteFriend()">
+                <div class="task-left">
+                    <input type="checkbox" id="inviteCheckbox" disabled>
+                    <span>Mời bạn bè</span>
+                </div>
+                <span class="task-action">Thực hiện</span>
+            </div>
+
+            <button class="reward-btn" onclick="claimReward()">
+                🎁 Nhận thưởng
+            </button>
+
+        </div>
+
+    </div>
+</main>
+
+<script src="{% static 'js/tasks.js' %}"></script>
+
+</body>
+</html>

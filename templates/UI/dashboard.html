@@ -1,0 +1,250 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+
+<body>
+
+{% include "components/sidebar.html" %}
+
+<main class="main-content">
+
+    {% include "components/header.html" %}
+
+    <section class="dashboard-grid">
+
+        <!-- ========================= EDITOR ========================== -->
+        <section class="editor">
+
+            <div class="editor-body">
+                <textarea
+                    id="textInput"
+                    placeholder="Nhập nội dung văn bản bạn muốn chuyển đổi tại đây..."
+                    maxlength="{% if request.user.plan == 'pro' %}20000{% else %}5000{% endif %}"
+                    oninput="updateCounter()"
+                ></textarea>
+            </div>
+
+            <div class="editor-footer">
+                <span id="charCounter">
+                    0 / {% if request.user.plan == 'pro' %}20000{% else %}5000{% endif %} ký tự
+                </span>
+
+                <div class="editor-actions">
+                    <button type="button" onclick="pasteText()">Dán văn bản</button>
+                    <button type="button" class="danger" onclick="clearText()">Xóa hết</button>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ========================= CONTROL PANEL ========================== -->
+        <aside class="control-panel">
+
+            <div class="card">
+                <h4>Giọng đọc</h4>
+
+                <div class="voice active" onclick="selectVoice('female', this)">
+                    <img src="https://i.imgur.com/8Km9tLL.png" alt="Hoài My">
+                    <div class="voice-info">
+                        <strong>Hoài My</strong>
+                        <small>Hà Nội · Nữ · 24 tuổi</small>
+                    </div>
+                </div>
+
+                <div class="voice" onclick="selectVoice('male', this)">
+                    <img src="https://i.imgur.com/6VBx3io.png" alt="Nam Minh">
+                    <div class="voice-info">
+                        <strong>Nam Minh</strong>
+                        <small>Hà Nội · Nam · 28 tuổi</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card slider-group">
+                <div class="slider-row">
+                    <label>Tốc độ nói</label>
+                    <input id="rateInput" type="range" min="-50" max="50" value="0">
+                </div>
+
+                <div class="slider-row">
+                    <label>Cao độ giọng</label>
+                    <input id="pitchInput" type="range" min="-50" max="50" value="0">
+                </div>
+            </div>
+
+            <button type="button" class="btn-primary" onclick="convertTextToSpeech()">
+                ▶ Chuyển đổi ngay
+            </button>
+
+            <div class="card">
+                <h4>Thử nghiệm âm thanh</h4>
+                <audio id="audioPlayer" controls style="width:100%; display:none;"></audio>
+            </div>
+
+        </aside>
+
+    </section>
+
+</main>
+
+
+<script>
+
+let selectedVoice = "female";
+
+/* ===== VOICE SELECT ===== */
+function selectVoice(voice, element) {
+    selectedVoice = voice;
+
+    document.querySelectorAll(".voice")
+        .forEach(v => v.classList.remove("active"));
+
+    element.classList.add("active");
+}
+
+/* ===== COUNTER ===== */
+function updateCounter() {
+    const textArea = document.getElementById("textInput");
+    const maxLength = textArea.getAttribute("maxlength");
+    const currentLength = textArea.value.length;
+
+    document.getElementById("charCounter").innerText =
+        currentLength + " / " + maxLength + " ký tự";
+}
+
+/* ===== PASTE ===== */
+function pasteText() {
+    navigator.clipboard.readText().then(text => {
+        document.getElementById("textInput").value = text;
+        updateCounter();
+    });
+}
+
+/* ===== CLEAR ===== */
+function clearText() {
+    document.getElementById("textInput").value = "";
+    updateCounter();
+}
+
+/* ===== CSRF ===== */
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== "") {
+        const cookies = document.cookie.split(";");
+
+        for (let cookie of cookies) {
+            cookie = cookie.trim();
+            if (cookie.startsWith(name + "=")) {
+                cookieValue = decodeURIComponent(
+                    cookie.substring(name.length + 1)
+                );
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+/* ===== CONVERT ===== */
+async function convertTextToSpeech() {
+
+    const text = document.getElementById("textInput").value.trim();
+    const rate = document.getElementById("rateInput").value;
+    const pitch = document.getElementById("pitchInput").value;
+
+    if (!text) {
+        alert("Vui lòng nhập nội dung");
+        return;
+    }
+
+    const csrftoken = getCookie("csrftoken");
+
+    try {
+        const response = await fetch("/api/tts/", {
+            method: "POST",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": csrftoken
+            },
+            body: JSON.stringify({
+                text: text,
+                voice: selectedVoice,
+                rate: rate,
+                pitch: pitch
+            })
+        });
+
+        if (!response.ok) {
+            const err = await response.json();
+            alert("Lỗi: " + (err.detail || JSON.stringify(err)));
+            return;
+        }
+
+        const result = await response.json();
+
+        if (result.audio_url) {
+            const audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.src = result.audio_url;
+            audioPlayer.style.display = "block";
+            audioPlayer.play();
+        } else {
+            alert("Không nhận được audio từ server");
+        }
+
+    } catch (error) {
+        console.error(error);
+        alert("Lỗi kết nối server");
+    }
+}
+
+/* ===== LOAD TEXT TỪ PROJECTS ===== */
+document.addEventListener("DOMContentLoaded", function () {
+
+    const savedText = localStorage.getItem("uploaded_text");
+
+    if (savedText) {
+        const textarea = document.getElementById("textInput");
+        if (textarea) {
+            textarea.value = savedText;
+            updateCounter();
+        }
+        localStorage.removeItem("uploaded_text");
+    }
+
+});
+
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const textarea = document.getElementById("textInput");
+
+    const savedText = localStorage.getItem("uploaded_text");
+
+    if (textarea && savedText) {
+        textarea.value = savedText;
+
+        // 🔥 cập nhật bộ đếm nếu bạn có hàm này
+        if (typeof updateCounter === "function") {
+            updateCounter();
+        }
+
+        // Xóa sau khi đã load
+        localStorage.removeItem("uploaded_text");
+    }
+
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Subtitle Convert</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/subtitle.css' %}">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    {% include "components/sidebar.html" %}
+
+    <main class="main-content">
+
+        <!-- Header -->
+        {% include "components/header.html" %}
+
+        <div class="page-container">
+
+            <h1 class="page-title">Chuyển đổi phụ đề</h1>
+
+            <div class="subtitle-box">
+
+                <!-- FORM GỬI LÊN BACKEND -->
+                <form method="post"
+                      enctype="multipart/form-data"
+                      action="{% url 'subtitle_convert' %}">
+                    
+                    {% csrf_token %}
+                    
+                    <div class="upload-area">
+                        <p>📁 Kéo thả file .srt / .vtt vào đây</p>
+                        <input type="file"
+                               name="subtitle_file"
+                               accept=".srt,.vtt"
+                               required>
+                    </div>
+
+                    <button type="submit" class="btn-yellow">
+                        Chuyển đổi
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- JS -->
+    <script src="{% static 'js/include.js' %}"></script>
+
+</body>
+</html>

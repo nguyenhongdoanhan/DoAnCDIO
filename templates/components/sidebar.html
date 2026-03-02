@@ -1,0 +1,54 @@
+<nav class="sidebar">
+
+  <!-- BRAND -->
+  <div class="brand">
+    <div class="logo">TT</div>
+    <div class="brand-text">
+      <strong>TextToSpeech</strong>
+      <small>AI Conversion</small>
+    </div>
+  </div>
+
+  <!-- MENU -->
+  <a href="/dashboard/" class="{% if request.path == '/dashboard/' %}active{% endif %}">
+    📄 Chuyển văn bản
+  </a>
+
+  <a href="/projects/" class="{% if request.path == '/projects/' %}active{% endif %}">
+    📁 Dự án
+  </a>
+
+  <a href="/library/" class="{% if request.path == '/library/' %}active{% endif %}">
+    🎧 Thư viện giọng
+  </a>
+
+  <a href="/clone/" class="{% if request.path == '/clone/' %}active{% endif %}">
+    🧬 Nhân bản giọng
+  </a>
+
+  <a href="/subtitle/" class="{% if request.path == '/subtitle/' %}active{% endif %}">
+    🎬 Chuyển phụ đề
+  </a>
+
+  <a href="/tasks/" class="{% if request.path == '/tasks/' %}active{% endif %}">
+    🎁 Nhiệm vụ
+  </a>
+
+  <a href="/pricing/" class="{% if request.path == '/pricing/' %}active{% endif %}">
+    💎 Bảng giá
+  </a>
+
+  <!-- BOTTOM -->
+  <div class="sidebar-bottom">
+
+    <a href="{% url 'settings' %}" class="{% if request.resolver_match.url_name == 'settings' %}active{% endif %}">
+    ⚙️ Cài đặt
+    </a>
+    
+    <a href="/logout/">
+      🚪 Đăng xuất
+    </a>
+
+  </div>
+
+</nav>

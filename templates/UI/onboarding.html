@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Onboarding | TextToSpeech</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/onboarding.css">
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="onboard-header">
+  <div class="header-left">
+    <div class="logo small"><span>TT</span></div>
+    <div>
+      <strong>TextToSpeech</strong>
+      <div class="sub">AI Conversion</div>
+    </div>
+  </div>
+</header>
+
+<!-- CONTENT -->
+<main class="onboard-container">
+  <h1>Nghề nghiệp của bạn là gì?</h1>
+  <p class="muted">Chỉ chọn 1 lựa chọn</p>
+
+  <div class="job-grid">
+    <div class="job-card" data-value="creator">
+      <span class="icon yellow">💡</span>
+      Nhà sáng tạo nội dung
+    </div>
+
+    <div class="job-card" data-value="office">
+      <span class="icon blue">👥</span>
+      Nhân viên văn phòng
+    </div>
+
+    <div class="job-card" data-value="business">
+      <span class="icon green">📈</span>
+      Kinh doanh tự do
+    </div>
+
+    <div class="job-card" data-value="freelancer">
+      <span class="icon orange">⚡</span>
+      Tự do
+    </div>
+
+    <div class="job-card" data-value="teacher">
+      <span class="icon purple">📚</span>
+      Giáo viên
+    </div>
+
+    <div class="job-card" data-value="real-estate">
+      <span class="icon gray">🏢</span>
+      Môi giới bất động sản
+    </div>
+
+    <div class="job-card" data-value="other">
+      <span class="icon red">❓</span>
+      Khác
+    </div>
+  </div>
+
+  <div class="onboard-footer">
+    <span class="skip">Để sau</span>
+    <button id="continueBtn" class="btn btn-yellow" disabled>
+      Tiếp tục
+    </button>
+  </div>
+</main>
+
+<!-- JS -->
+<script>
+  const cards = document.querySelectorAll(".job-card");
+  const btn = document.getElementById("continueBtn");
+  let selected = null;
+
+  cards.forEach(card => {
+    card.addEventListener("click", () => {
+      cards.forEach(c => c.classList.remove("active"));
+      card.classList.add("active");
+      selected = card.dataset.value;
+      btn.disabled = false;
+    });
+  });
+
+  btn.addEventListener("click", () => {
+    if (!selected) return;
+    // Có thể lưu localStorage nếu cần
+    // localStorage.setItem("job", selected);
+    location.href = "dashboard.html";
+  });
+</script>
+
+</body>
+</html>

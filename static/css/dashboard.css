@@ -1,0 +1,219 @@
+/* ==============================
+   GRID TỔNG
+================================ */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 48px;
+  margin-top: 36px;
+}
+
+
+/* ==============================
+   EDITOR (KHUNG TRÁI)
+================================ */
+.editor {
+  background: linear-gradient(180deg, #ffffff, #f9fbff);
+  border-radius: 24px;
+  padding: 32px;
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.editor-body {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #eef2f7;
+  padding: 20px;
+}
+
+.editor textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #0f172a;
+  background: transparent;
+}
+
+
+/* ==============================
+   FOOTER TEXTAREA
+================================ */
+.editor-footer {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #eef2f7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.editor-actions {
+  display: flex;
+  gap: 18px;
+}
+
+.editor-footer button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  color: #2563eb;
+  transition: 0.2s;
+}
+
+.editor-footer button:hover {
+  opacity: 0.7;
+}
+
+.editor-footer .danger {
+  color: #ef4444;
+}
+
+
+/* ==============================
+   PANEL PHẢI
+================================ */
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.control-panel .card {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
+
+
+/* ==============================
+   VOICE CARD
+================================ */
+.voice {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 10px;
+}
+
+.voice:hover {
+  background: #f1f5ff;
+}
+
+.voice.active {
+  border: 2px solid #ff9800;
+  background: #fff3e0;
+}
+
+.voice img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.voice-info strong {
+  display: block;
+  font-size: 15px;
+  color: #0f172a;
+}
+
+.voice-info small {
+  font-size: 12px;
+  color: #64748b;
+}
+
+
+/* ==============================
+   SLIDER FIXED LAYOUT
+================================ */
+.slider-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.slider-row label {
+  width: 110px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+}
+
+.slider-row input[type="range"] {
+  flex: 1;
+}
+
+/* slider style */
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: #dbeafe;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: #2563eb;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+}
+
+
+/* ==============================
+   NÚT CHÍNH
+================================ */
+.btn-primary {
+  width: 100%;
+  height: 62px;
+  background: linear-gradient(135deg, #ffb547, #ff9800);
+  color: #000;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 14px 28px rgba(255,152,0,0.35);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(255,152,0,0.45);
+}
+
+
+/* ==============================
+   AUDIO CARD
+================================ */
+.card h4 {
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+}

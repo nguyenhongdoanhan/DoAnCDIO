@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign up | TextToSpeech</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body>
+
+<section class="auth-container">
+  <div class="auth-box">
+
+    <!-- LOGO -->
+    <div class="logo">
+      <span>TT</span>
+    </div>
+
+    <h2 class="auth-title">TextToSpeech</h2>
+    <p class="auth-subtitle">AI Conversion</p>
+
+    {% if error %}
+      <div class="error-message">
+        {{ error }}
+      </div>
+    {% endif %}
+
+    <!-- FORM -->
+    <form method="POST">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label>Email</label>
+        <input 
+          class="form-input" 
+          type="email" 
+          name="email"
+          placeholder="student@university.edu"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input 
+          class="form-input" 
+          type="password" 
+          name="password"
+          placeholder="Minimum 8 characters"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input 
+          class="form-input" 
+          type="password" 
+          name="confirm_password"
+          placeholder="Confirm your password"
+          required>
+      </div>
+
+      <label class="checkbox">
+        <input type="checkbox" required>
+        Tôi đồng ý với <a href="#">Điều khoản</a> & <a href="#">Chính sách</a>
+      </label>
+
+      <button type="submit" class="btn btn-primary btn-full">
+        Sign up
+      </button>
+    </form>
+
+    <div class="divider">OR</div>
+
+    <button class="btn btn-social google">
+      Continue with Google
+    </button>
+
+    <button class="btn btn-social facebook">
+      Continue with Facebook
+    </button>
+
+    <p class="auth-footer">
+      Already have an account?
+      <a href="/">Login</a>
+    </p>
+
+  </div>
+</section>
+
+</body>
+</html>

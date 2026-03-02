@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Thư viện giọng nói</title>
+
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+  <link rel="stylesheet" href="{% static 'css/voice-library.css' %}">
+</head>
+<body>
+
+<div id="sidebar"></div>
+
+<main class="main-content">
+  <div id="header"></div>
+
+  <div class="page-container">
+
+    <h1 class="page-title">Thư viện giọng nói</h1>
+
+    <div class="voice-filter">
+      <input type="text" placeholder="Tìm kiếm giọng đọc..." />
+
+      <select>
+        <option>Lĩnh vực: Tất cả</option>
+        <option>Giải trí</option>
+        <option>Giáo dục</option>
+      </select>
+
+      <select>
+        <option>Giọng: Tất cả</option>
+        <option>Nam</option>
+        <option>Nữ</option>
+      </select>
+
+      <button class="btn-primary">+ Tạo giọng</button>
+    </div>
+
+    <div class="voice-tags">
+      <button class="active">Thịnh hành</button>
+      <button>Giọng Nam</button>
+      <button>Giọng Nữ</button>
+    </div>
+
+    <div class="voice-grid">
+
+      <!-- Hoài My -->
+      <div class="voice-card active">
+        <img src="https://i.imgur.com/8Km9tLL.png" alt="Hoài My">
+        <h4>Hoài My</h4>
+        <div class="meta">
+          <span>Hà Nội</span>
+          <span>Nữ</span>
+        </div>
+        <button class="outline preview-btn"
+                data-audio="/media/tts/70a803a7-a863-43d7-8ee0-b99ec88f2806.mp3">
+          Nghe thử
+        </button>
+      </div>
+
+      <!-- Nam Minh -->
+      <div class="voice-card">
+        <img src="https://i.imgur.com/6VBx3io.png" alt="Nam Minh">
+        <h4>Nam Minh</h4>
+        <div class="meta">
+          <span>Hà Nội</span>
+          <span>Nam</span>
+        </div>
+        <button class="outline preview-btn"
+                data-audio="/media/tts/3faf5ffa-37a8-420f-a319-13d253227a41.mp3">
+          Nghe thử
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+<audio id="audioPlayer"></audio>
+
+<script src="{% static 'js/include.js' %}"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const buttons = document.querySelectorAll(".preview-btn");
+  const audioPlayer = document.getElementById("audioPlayer");
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", function () {
+
+      const audioUrl = this.dataset.audio;
+
+      audioPlayer.pause();
+      audioPlayer.src = audioUrl;
+      audioPlayer.load();
+      audioPlayer.play();
+
+      buttons.forEach(b => b.innerText = "Nghe thử");
+      this.innerText = "Đang phát...";
+
+    });
+  });
+
+});
+</script>
+
+</body>
+</html>

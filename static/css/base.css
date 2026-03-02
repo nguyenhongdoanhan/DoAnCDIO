@@ -1,0 +1,170 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+* {
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f4f7fb;
+  color: #0f172a;
+}
+
+/* Logo */
+.logo {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* ===================================================== */
+/* ==================== DARK MODE ====================== */
+/* ===================================================== */
+
+body.dark-mode {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+/* Main layout */
+body.dark-mode .main-content {
+  background: #0f172a;
+}
+
+/* Sidebar */
+body.dark-mode .sidebar {
+  background: linear-gradient(180deg, #0f172a, #111827);
+}
+
+/* Cards (pricing, nhiệm vụ, settings, editor...) */
+body.dark-mode .settings-card,
+body.dark-mode .card,
+body.dark-mode .voice-card,
+body.dark-mode .editor,
+body.dark-mode .box {
+  background: #111827;
+  border: 1px solid #1f2937;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+  color: #e5e7eb;
+}
+
+/* Input fields */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background: #1f2937;
+  color: #e2e8f0;
+  border: 1px solid #374151;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color: #94a3b8;
+}
+
+/* Headings */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+  color: #f8fafc;
+}
+
+/* Paragraph / span text */
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode label {
+  color: #cbd5e1;
+}
+
+/* Buttons */
+body.dark-mode button,
+body.dark-mode .save-btn {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  border: none;
+}
+
+/* Divider */
+body.dark-mode hr {
+  border-color: #1f2937;
+}
+
+/* Smooth transition */
+body,
+.sidebar,
+.main-content,
+.settings-card,
+.card,
+input,
+textarea,
+button {
+  transition: background 0.25s ease, color 0.25s ease, border 0.25s ease;
+}
+/* ===== PRICING DARK FIX ===== */
+
+body.dark-mode .pricing-card {
+    background: #111827;
+    border: 1px solid #1f2937;
+    color: #f1f5f9;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+    transition: 0.3s ease;
+}
+
+/* Card hover nhẹ */
+body.dark-mode .pricing-card:hover {
+    transform: translateY(-4px);
+    border-color: #3b82f6;
+}
+
+/* Gói đang sử dụng */
+body.dark-mode .pricing-card.active {
+    border: 2px solid #6366f1;
+    box-shadow: 0 0 25px rgba(99,102,241,0.3);
+}
+
+/* Giá */
+body.dark-mode .pricing-card .price {
+    color: #93c5fd;
+    font-weight: 600;
+}
+
+/* Nút chọn */
+body.dark-mode .pricing-card button {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    padding: 10px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: none;
+}
+
+/* Badge đang dùng */
+body.dark-mode .pricing-card .current-plan {
+    background: #22c55e;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+:root {
+    --card-bg: #ffffff;
+    --card-border: rgba(0, 0, 0, 0.08);
+    --text-primary: #111;
+    --text-secondary: #555;
+}
+
+/* Khi dark mode bật */
+body.dark {
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+}

@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dự án</title>
+
+  <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/layout.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/projects.css' %}" />
+</head>
+<body>
+
+<div id="sidebar"></div>
+
+<main class="main-content">
+  <div id="header"></div>
+
+  <!-- ========================= -->
+  <!-- PAGE HEADER -->
+  <!-- ========================= -->
+  <div class="projects-top">
+    <h1 class="page-title">Dự án</h1>
+
+    <a href="{% url 'dashboard' %}" class="btn-create">
+      + Tạo dự án mới
+    </a>
+  </div>
+
+  <!-- ========================= -->
+  <!-- ACTION CARDS -->
+  <!-- ========================= -->
+  <div class="project-actions">
+
+    <!-- 🔥 ĐÃ THÊM onclick -->
+    <div class="action-card" onclick="uploadTextFile()" style="cursor:pointer;">
+      <div class="icon">📁</div>
+      <strong>Từ file văn bản</strong>
+      <small>.docx, .pdf</small>
+    </div>
+
+    <!-- ================= AUDIO UPLOAD (THÊM MỚI) ================= -->
+  <div class="action-card" onclick="triggerAudioUpload()" style="cursor:pointer;">
+  <div class="icon">🎧</div>
+  <strong>Tải lên âm thanh</strong>
+  <small>.mp3, .wav</small>
+  </div>
+
+<input type="file" id="audioInput" accept=".mp3,.wav" style="display:none;">
+    <!-- ============================================================ -->
+
+    <div class="action-card">
+      <div class="icon">🔗</div>
+      <strong>Nhập web link</strong>
+      <small>Tự động lấy nội dung</small>
+    </div>
+
+  </div>
+
+  <!-- ========================= -->
+  <!-- RECENT PROJECTS -->
+  <!-- ========================= -->
+  <div class="project-header">
+    <h2>Dự án gần đây</h2>
+
+    <input 
+      type="text"
+      id="projectSearch"
+      class="search-input"
+      placeholder="Tìm kiếm dự án..."
+    />
+  </div>
+
+  <!-- ========================= -->
+  <!-- PROJECT LIST -->
+  <!-- ========================= -->
+  <div class="project-list" id="projectList">
+
+    {% if projects %}
+        {% for project in projects %}
+        <div class="project-item">
+          <div class="project-info">
+            <strong>
+              {{ project.title|default:project.text|truncatechars:40 }}
+            </strong>
+
+            <small>
+              {{ project.voice|default:"Giọng đọc" }} · 
+              {{ project.created_at|timesince }} trước
+            </small>
+          </div>
+
+          <a href="{{ project.audio_file.url }}" 
+             class="btn-outline" 
+             target="_blank">
+             Nghe
+          </a>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="project-item">
+          <div class="project-info">
+            <strong>Chưa có dự án nào</strong>
+            <small>Bạn hãy tạo dự án đầu tiên 🎉</small>
+          </div>
+        </div>
+    {% endif %}
+
+  </div>
+
+</main>
+
+<script src="{% static 'js/include.js' %}"></script>
+<script src="{% static 'js/projects.js' %}"></script>
+
+</body>
+</html>

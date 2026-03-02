@@ -1,0 +1,25 @@
+<header class="header-bar">
+
+  <h1 class="page-title">Chuyển nội dung văn bản</h1>
+
+  <div class="user-info">
+
+    <div class="user-text">
+      <span class="badge {% if request.user.plan == 'pro' %}pro{% else %}basic{% endif %}">
+        {{ request.user.plan|upper }} MEMBER
+      </span>
+
+      <span class="email">
+        {{ request.user.email }}
+      </span>
+    </div>
+
+    <img src="https://i.pravatar.cc/40?u={{ request.user.username }}"
+         alt="avatar" />
+
+  </div>
+
+</header>
+
+{% load static %}
+<script src="{% static 'js/theme.js' %}"></script>

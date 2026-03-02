@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | TextToSpeech</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body>
+
+<section class="auth-container">
+  <div class="auth-box">
+
+    <!-- LOGO -->
+    <div class="logo">
+      <span>TT</span>
+    </div>
+
+    <h2 class="auth-title">TextToSpeech</h2>
+    <p class="auth-subtitle">AI Conversion</p>
+
+    <!-- HIỂN THỊ LỖI NẾU CÓ -->
+    {% if error %}
+      <p style="color: red; margin-bottom: 10px;">
+        {{ error }}
+      </p>
+    {% endif %}
+
+    <!-- FORM LOGIN CHUẨN DJANGO -->
+    <form method="POST">
+      {% csrf_token %}
+
+      <input
+        name="email"
+        class="form-input"
+        type="email"
+        placeholder="Email"
+        required
+      >
+
+      <input
+        name="password"
+        class="form-input"
+        type="password"
+        placeholder="Password"
+        required
+      >
+
+      <div class="auth-row">
+        <label>
+          <input type="checkbox"> Remember me
+        </label>
+        <a href="/password-reset/" style="color:blue;">
+        Forgot password?
+        </a>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary btn-full">
+        Log in
+      </button>
+    </form>
+
+    <p class="auth-footer">
+      Chưa có tài khoản?
+      <a href="/signup/">Sign up</a>
+    </p>
+
+  </div>
+</section>
+
+</body>
+</html>

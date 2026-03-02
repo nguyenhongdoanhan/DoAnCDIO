@@ -1,0 +1,164 @@
+/* ======================
+   PAGE
+====================== */
+.page-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* CONTAINER GIỮA */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ======================
+   FILTER BAR
+====================== */
+.voice-filter {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.voice-filter input,
+.voice-filter select {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+.btn-primary {
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* ======================
+   TAGS
+====================== */
+.voice-tags {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.voice-tags button {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.voice-tags button.active {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+/* ======================
+   GRID
+====================== */
+.voice-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+/* ======================
+   CARD
+====================== */
+.voice-card {
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  transition: .25s ease;
+}
+
+.voice-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+}
+
+.voice-card.active {
+  outline: 2px solid #2563eb;
+}
+
+.voice-card img {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+.voice-card h4 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.voice-card .meta {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 14px;
+}
+
+.voice-card .outline {
+  width: 100%;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #2563eb;
+  background: white;
+  color: #2563eb;
+  cursor: pointer;
+  font-weight: 500;
+}
+/* ======================
+   UPLOAD BOX
+====================== */
+.upload-box {
+  background: white;
+  border-radius: 18px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  transition: .25s ease;
+  margin-bottom: 30px;
+  border: 2px dashed #e5e7eb;
+}
+
+.upload-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  border-color: #2563eb;
+}
+
+.upload-box h3 {
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+
+.upload-box p {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.upload-icon {
+  font-size: 40px;
+}

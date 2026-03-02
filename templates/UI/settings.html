@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Cài đặt tài khoản</title>
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/settings.css' %}">
+</head>
+<body>
+
+{% include "components/sidebar.html" %}
+
+<main class="main-content">
+    {% include "components/header.html" %}
+
+    <div class="page-container">
+        <h1 class="page-title">Cài đặt tài khoản</h1>
+
+        <form method="POST" class="settings-card">
+            {% csrf_token %}
+
+            <h3>Thông tin tài khoản</h3>
+
+            <div class="settings-group">
+                <label>Email</label>
+                <input type="text" value="{{ request.user.email }}" disabled>
+            </div>
+
+            <div class="settings-group">
+                <label>Username</label>
+                <input type="text" name="username" value="{{ request.user.username }}">
+            </div>
+
+            <hr>
+
+            <h3>Đổi mật khẩu</h3>
+
+            <div class="settings-group">
+                <label>Mật khẩu hiện tại</label>
+                <input type="password" name="current_password">
+            </div>
+
+            <div class="settings-group">
+                <label>Mật khẩu mới</label>
+                <input type="password" name="new_password">
+            </div>
+
+            <div class="settings-group">
+                <label>Xác nhận mật khẩu mới</label>
+                <input type="password" name="confirm_password">
+            </div>
+
+            <hr>
+
+            <h3>Giao diện</h3>
+
+            <div class="settings-group toggle-group">
+                <label>Dark Mode</label>
+                <input type="checkbox" id="darkModeToggle">
+            </div>
+
+            <button type="submit" class="save-btn">Lưu thay đổi</button>
+        </form>
+    </div>
+</main>
+
+<script>
+    const toggle = document.getElementById("darkModeToggle");
+
+    if (localStorage.getItem("darkMode") === "enabled") {
+        document.body.classList.add("dark-mode");
+        toggle.checked = true;
+    }
+
+    toggle.addEventListener("change", function() {
+        if (this.checked) {
+            document.body.classList.add("dark-mode");
+            localStorage.setItem("darkMode", "enabled");
+        } else {
+            document.body.classList.remove("dark-mode");
+            localStorage.setItem("darkMode", "disabled");
+        }
+    });
+</script>
+
+</body>
+</html>

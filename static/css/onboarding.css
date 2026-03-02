@@ -1,0 +1,113 @@
+/* ===== HEADER ===== */
+.onboard-header {
+  height: 64px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-left .sub {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* ===== CONTAINER ===== */
+.onboard-container {
+  max-width: 900px;
+  margin: 60px auto;
+  text-align: center;
+}
+
+.onboard-container h1 {
+  margin-bottom: 8px;
+}
+
+.muted {
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* ===== GRID ===== */
+.job-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 40px 0;
+}
+
+/* ===== CARD ===== */
+.job-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s ease;
+}
+
+.job-card:hover {
+  background: #f8fafc;
+}
+
+.job-card.active {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 1px #22c55e inset;
+}
+
+/* ===== ICON ===== */
+.icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.icon.yellow { background: #fef3c7; color: #f59e0b; }
+.icon.blue   { background: #dbeafe; color: #2563eb; }
+.icon.green  { background: #dcfce7; color: #16a34a; }
+.icon.orange { background: #ffedd5; color: #ea580c; }
+.icon.purple { background: #ede9fe; color: #7c3aed; }
+.icon.gray   { background: #f1f5f9; color: #475569; }
+.icon.red    { background: #fee2e2; color: #dc2626; }
+
+/* ===== FOOTER ===== */
+.onboard-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 20px;
+}
+
+.skip {
+  color: #94a3b8;
+  cursor: pointer;
+}
+
+/* ===== BUTTON ===== */
+.btn-yellow {
+  background: #facc15;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.btn-yellow:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -1,0 +1,190 @@
+/* ==============================
+   AUTH PAGE BACKGROUND
+================================ */
+body {
+  margin: 0;
+  background: #f5f7fb;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  
+}
+
+
+/* ==============================
+   AUTH LAYOUT
+================================ */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ==============================
+   AUTH CARD
+================================ */
+.auth-box {
+  width: 420px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+
+/* ==============================
+   LOGO
+================================ */
+.logo {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 12px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo span {
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+
+/* ==============================
+   TEXT
+================================ */
+.auth-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.auth-subtitle {
+  color: #64748b;
+  font-size: 14px;
+  margin: 6px 0 24px;
+}
+
+
+/* ==============================
+   FORM
+================================ */
+.form-group {
+  text-align: left;
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #475569;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+
+/* ==============================
+   ROW
+================================ */
+.auth-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin: 14px 0 18px;
+}
+
+.auth-link {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+
+/* ==============================
+   CHECKBOX
+================================ */
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.checkbox a {
+  color: #2563eb;
+}
+
+
+/* ==============================
+   PRIMARY BUTTON
+================================ */
+.auth-box .btn-primary {
+  width: 100%;
+  height: 48px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(37,99,235,0.3);
+  margin-top: 6px;
+}
+
+
+/* ==============================
+   DIVIDER
+================================ */
+.divider {
+  text-align: center;
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 18px 0;
+}
+
+
+/* ==============================
+   SOCIAL BUTTONS
+================================ */
+.btn-social {
+  width: 100%;
+  height: 44px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.btn-social.google::before {
+  content: "G ";
+  font-weight: bold;
+}
+
+.btn-social.facebook::before {
+  content: "f ";
+  font-weight: bold;
+}
+
+
+/* ==============================
+   FOOTER
+================================ */
+.auth-footer {
+  margin-top: 18px;
+  font-size: 14px;
+}
